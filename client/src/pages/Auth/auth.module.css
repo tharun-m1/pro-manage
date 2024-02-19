@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  /* border: 2px solid red; */
+  height: 100vh;
+  display: flex;
+}
+@font-face {
+  font-family: open Sans;
+  src: url("../../assets/fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf");
+}
+.left {
+  /* border: 1px solid red; */
+  width: 60%;
+  background-color: #17a2b8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.imgContainer {
+  /* border: 1px solid red; */
+  width: 60%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.circle {
+  /* border: 1px solid red; */
+  width: 35vmin;
+  height: 35vmin;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #317f8b;
+}
+.circle img {
+  /* position: fixed; */
+  width: 160%;
+  position: relative;
+  top: 20%;
+}
+.right {
+  /* border: 1px solid red; */
+  width: 40%;
+}
+.formContainer {
+  /* border: 1px solid red; */
+  width: 80%;
+  /* height: 55vh; */
+  margin: auto;
+  margin-top: 10vh;
+  padding-bottom: 20px;
+}
+.bottom {
+  /* border: 1px solid red; */
+  width: 80%;
+  margin: auto;
+  /* height: 20vh; */
+}
+.bottom div {
+  margin-top: 20px;
+}
+.text {
+  text-align: center;
+  font-family: open Sans;
+  color: #828282;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.btnContainer {
+  text-align: center;
+}
+.btnContainer button {
+  width: 100%;
+  background-color: #ffffff;
+  height: 100%;
+  border-radius: 30px;
+  border: 2px solid #17a2b8;
+  color: #17a2b8;
+  font-family: Open Sans;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: 0em;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px 0px;
+}

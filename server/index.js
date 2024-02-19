@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
+const authRoutes = require("./routes/auth");
+const taskRoutes = require("./routes/taskRoutes");
 
 const app = express();
 app.use(cors());
@@ -15,6 +17,10 @@ app.get("/health", (req, res) => {
     status: "Active",
   });
 });
+
+// ===================== routes ===================================
+app.use("/", authRoutes);
+app.use("/", taskRoutes);
 // ====================Error Handler===============================
 app.use((err, req, res, next) => {
   const status = err.status || 500;
