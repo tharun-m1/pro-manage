@@ -35,3 +35,31 @@ export const login = async (payload) => {
     }
   }
 };
+
+export const verify = async () => {
+  try {
+    const jwToken = localStorage.getItem("jwToken");
+    if (!jwToken) {
+      const error = new Error();
+      error.status = 500;
+      error.message = "You are not LoggedIn";
+      throw new error();
+    }
+    const headers = {
+      "Content-Type": "application/json",
+      authorization: jwToken,
+    };
+    const response = await axios.post(
+      `${backendBaseUrl}/verify`,
+      {},
+      { headers: headers }
+    );
+    return response;
+  } catch (err) {
+    console.log(err);
+    const error = new Error();
+    error.status = 500;
+    error.message = "You are not LoggedIn";
+    throw new error();
+  }
+};

@@ -1,0 +1,59 @@
+.container {
+  /* border: 1px solid red; */
+  position: relative;
+  border-right: 1px solid #edf5fe;
+  height: 100vh;
+}
+@font-face {
+  font-family: Poppins;
+  src: url("../../assets/Poppins/Poppins-Bold.ttf");
+}
+@font-face {
+  font-family: Poppins light;
+  src: url("../../assets/Poppins/Poppins-Light.ttf");
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 22px 5px;
+  font-size: 1.5rem;
+  font-family: Poppins;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+.board,
+.analytics,
+.settings,
+.logout {
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+
+  font-family: Poppins light;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 24px;
+  color: #707070;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.board img,
+.analytics img,
+.settings img,
+.logout img {
+  margin-left: 25px;
+  margin-right: 15px;
+}
+
+.logout {
+  /* border: 1px solid red; */
+  width: 100%;
+  color: red;
+  position: absolute;
+  bottom: 10px;
+}

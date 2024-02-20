@@ -1,0 +1,13 @@
+.container {
+  /* border: 1px solid red; */
+  height: 100vh;
+  display: flex;
+}
+.left {
+  /* border: 1px solid red; */
+  width: 18%;
+}
+.right {
+  /* border: 1px solid red; */
+  width: 82%;
+}

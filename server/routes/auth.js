@@ -4,6 +4,7 @@ const router = express.Router();
 const Admin = require("../models/admin");
 const errorHandler = require("../utils/errorHandler");
 const jwt = require("jsonwebtoken");
+const isLoggedIn = require("../middleware/isLoggedIn");
 require("dotenv").config();
 // =====================Sign up=================================================
 
@@ -57,4 +58,11 @@ router.post("/login", async (req, res, next) => {
 });
 // ====================================================================
 
+// ===============================verify ==============================
+router.post("/verify", isLoggedIn, (req, res, next) => {
+  return res.status(200).json({
+    status: "OK",
+  });
+});
+// ===================================================================
 module.exports = router;

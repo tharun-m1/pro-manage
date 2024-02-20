@@ -1,11 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./dashboard.module.css";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+
+import Loading from "../../components/Loading/Loading";
+import { verify } from "../../api/auth";
+import Nav from "../../components/Nav/Nav";
 function Dashboard() {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  useEffect(() => {
+    async function Verify() {
+      try {
+        setLoading(true);
+        await verify();
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+        alert("You are not LoggedIn");
+        return navigate("/");
+      }
+    }
+    Verify();
+  }, []);
   if (!localStorage.getItem("jwToken")) {
     return <Navigate to="/" />;
   }
-  return <div>Dashboard</div>;
+  return (
+    <>
+      <div className={styles.container}>
+        {loading ? <Loading /> : ""}
+        <div className={styles.left}>
+          <Nav />
+        </div>
+        <div className={styles.right}></div>
+      </div>
+    </>
+  );
 }
 
 export default Dashboard;

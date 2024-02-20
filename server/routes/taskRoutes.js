@@ -25,9 +25,16 @@ router.get("/all-tasks", isLoggedIn, async (req, res, next) => {
   try {
     const adminId = req.adminId;
     const data = await Task.find({ adminId: adminId.toString() });
+    const todo = data.filter((el) => el.status === "todo");
+    const backlog = data.filter((el) => el.status === "backlog");
+    const progress = data.filter((el) => el.status === "progress");
+    const done = data.filter((el) => el.status === "done");
     res.status(200).json({
       status: "OK",
-      data: data,
+      todo,
+      backlog,
+      progress,
+      done,
     });
   } catch (err) {
     console.log(err.message);
