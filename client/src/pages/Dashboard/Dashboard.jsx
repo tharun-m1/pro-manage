@@ -5,9 +5,20 @@ import Loading from "../../components/Loading/Loading";
 import { verify } from "../../api/auth";
 import Nav from "../../components/Nav/Nav";
 import Board from "../../components/Board/Board";
+import Analytics from "../../components/Analytics/Analytics";
+import { useSelector } from "react-redux";
 function Dashboard() {
   const [loading, setLoading] = useState(false);
+  const nav = useSelector((state) => state.nav.value);
   const navigate = useNavigate();
+  const renderComponent = () => {
+    if (nav === "board") {
+      return <Board />;
+    }
+    if (nav === "analytics") {
+      return <Analytics />;
+    }
+  };
   useEffect(() => {
     async function Verify() {
       try {
@@ -33,9 +44,7 @@ function Dashboard() {
         <div className={styles.left}>
           <Nav />
         </div>
-        <div className={styles.right}>
-          <Board />
-        </div>
+        <div className={styles.right}>{renderComponent()}</div>
       </div>
     </>
   );
