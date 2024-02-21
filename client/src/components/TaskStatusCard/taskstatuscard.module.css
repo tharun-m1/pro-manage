@@ -1,0 +1,35 @@
+.container {
+  /* border: 1px solid red; */
+  background-color: #eef2f5;
+  height: 100%;
+  border-radius: 10px;
+  min-width: 29%;
+  overflow: auto;
+}
+
+.head {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10px;
+}
+.head > div:first-child {
+  font-family: Poppins light;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+}
+.head > div:nth-child(2) img {
+  cursor: pointer;
+}
+.tasksContainer {
+  /* border: 1px solid red; */
+  /* height: 100%; */
+  padding: 10px 10px;
+  height: fit-content;
+  overflow: auto;
+}
+.tasksContainer > div {
+  margin-bottom: 10px;
+}

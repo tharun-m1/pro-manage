@@ -1,0 +1,112 @@
+@font-face {
+  font-family: Inter;
+  src: url("../../assets/Inter/static/Inter-Medium.ttf");
+}
+.container {
+  /* border: 1px solid red; */
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+}
+.head > div:last-child {
+  /* border: 1px solid red; */
+  letter-spacing: 5px;
+  font-family: Poppins;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.priority {
+  display: flex;
+  align-items: center;
+}
+.priority > div:last-child {
+  font-family: Poppins light;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 12px;
+  margin-left: 10px;
+  text-align: left;
+}
+.hero {
+  font-family: Poppins;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding: 20px 0px;
+}
+.checklistHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checklistHead > div:first-child {
+  font-family: Inter;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.checklistHead > div:last-child {
+  cursor: pointer;
+}
+
+.checklistItem {
+  /* border: 1px solid red; */
+  padding: 5px 5px;
+  display: flex;
+}
+.checklistItem > div:last-child {
+  font-family: Inter;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  flex-grow: 1;
+}
+.checklistItem div {
+  border: 2px solid #828282;
+  padding: 10px 10px;
+  border-radius: 10px;
+}
+.checklistItem > div:first-child {
+  border-right: none;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.checklistItem > div:last-child {
+  border-left: none;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.checklistItem > div:first-child input {
+  accent-color: #17a2b8;
+  /* width: 50px; */
+}
+.checklistFooter {
+  display: flex;
+  /* justify-content: space-around; */
+  gap: 8px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.checklistFooter > div:nth-child(2) {
+  margin-left: auto;
+}
+.checklistFooter div {
+  padding: 5px 10px 5px 10px;
+  background-color: #eeecec;
+  font-family: Poppins light;
+  font-size: 0.6rem;
+  letter-spacing: 0.5px;
+  border-radius: 10px;
+  cursor: pointer;
+}

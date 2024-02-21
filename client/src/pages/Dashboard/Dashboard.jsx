@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./dashboard.module.css";
 import { Navigate, useNavigate } from "react-router-dom";
-
 import Loading from "../../components/Loading/Loading";
 import { verify } from "../../api/auth";
 import Nav from "../../components/Nav/Nav";
+import Board from "../../components/Board/Board";
 function Dashboard() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ function Dashboard() {
       }
     }
     Verify();
+    // eslint-disable-next-line
   }, []);
   if (!localStorage.getItem("jwToken")) {
     return <Navigate to="/" />;
@@ -32,7 +33,9 @@ function Dashboard() {
         <div className={styles.left}>
           <Nav />
         </div>
-        <div className={styles.right}></div>
+        <div className={styles.right}>
+          <Board />
+        </div>
       </div>
     </>
   );

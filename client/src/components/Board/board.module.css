@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #9cb7c5; /* Color of the scrollbar */
+  border-radius: 10px; /* Border radius of the scrollbar */
+}
+
+.container {
+  /* border: 1px solid red; */
+  height: inherit;
+  overflow: auto;
+}
+.nameContainer {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 25px 20px 15px;
+}
+.nameContainer > div:first-child {
+  font-family: Poppins;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 33px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.nameContainer > div:nth-child(2) {
+  font-family: Poppins light;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 30px;
+  text-align: left;
+}
+.titleContainer {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 25px 20px 15px;
+}
+.titleContainer > div:first-child {
+  font-family: Poppins light;
+  font-size: 29px;
+  font-weight: 500;
+  line-height: 44px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.titleContainer > div:nth-child(2) {
+  font-family: Poppins light;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 30px;
+  text-align: left;
+  cursor: pointer;
+}
+.taskStatusContainer {
+  /* border: 1px solid red; */
+  display: flex;
+  height: 85vh;
+  overflow: auto;
+  padding: 0px 10px;
+  gap: 10px;
+}

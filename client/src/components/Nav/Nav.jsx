@@ -21,7 +21,7 @@ function Nav() {
     <>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <img width={"30px"} src={logo} />
+          <img width={"30px"} src={logo} alt="logo" />
           <span>Pro Manage</span>
         </div>
 
