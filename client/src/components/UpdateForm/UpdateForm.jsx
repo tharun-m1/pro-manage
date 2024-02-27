@@ -26,7 +26,7 @@ function UpdateForm() {
       name = name.trim();
       if (name !== "") {
         for (let i = 0; i < name.length; i++) {
-          if (!isNaN(name[i])) {
+          if (!/^[A-Za-z]+$/.test(name[i])) {
             return alert("Enter valid name");
           }
         }
