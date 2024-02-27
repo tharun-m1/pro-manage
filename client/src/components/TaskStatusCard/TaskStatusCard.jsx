@@ -4,6 +4,7 @@ import collapse from "../../assets/collapse.svg";
 import add from "../../assets/add.svg";
 import TaskCard from "../TaskCard/TaskCard";
 import { useSelector } from "react-redux";
+import { changeFilter } from "../../redux/filterSlice";
 
 function TaskStatusCard({
   status,
@@ -97,7 +98,8 @@ function TaskStatusCard({
         setTasks(newData);
       }
     }
-  }, [data, status, timeFilter]);
+    // eslint-disable-next-line
+  }, [data, status, timeFilter, changeFilter]);
 
   const handleCollapse = () => {
     setCollapseAll(!collapseAll);

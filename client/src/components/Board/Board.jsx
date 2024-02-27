@@ -29,6 +29,7 @@ function Board() {
   const handleShowModal = (state) => {
     setShowModal(state);
   };
+
   useEffect(() => {
     async function getName() {
       try {
@@ -53,6 +54,8 @@ function Board() {
       }
     }
     getName();
+    dispatch(changeFilter("week"));
+    // eslint-disable-next-line
   }, []);
   const handleToast = () => {
     return toast("Link Copied");
@@ -75,6 +78,7 @@ function Board() {
           <div>Board</div>
           <div>
             <select
+              defaultValue={"week"}
               style={{
                 border: "none",
                 fontFamily: "Poppins light",
@@ -83,9 +87,7 @@ function Board() {
               }}
               onChange={(e) => dispatch(changeFilter(e.target.value))}
             >
-              <option selected value={"week"}>
-                This Week
-              </option>
+              <option value={"week"}>This Week</option>
               <option value={"today"}>Today</option>
               <option value={"month"}>This Month</option>
             </select>

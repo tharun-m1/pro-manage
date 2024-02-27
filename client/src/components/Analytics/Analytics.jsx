@@ -10,7 +10,6 @@ function Analytics() {
       try {
         setLoading(true);
         const response = await getAnalytics();
-        console.log(response.data.filteredData);
         setAnalytics(response.data.filteredData);
         setLoading(false);
       } catch (err) {
