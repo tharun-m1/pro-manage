@@ -5,6 +5,9 @@ import add from "../../assets/add.svg";
 import Loading from "../Loading/Loading";
 import { createTask, getTask, updateTask } from "../../api/taskApi";
 import { useSelector } from "react-redux";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 function CreateTask({ handleShowModal, modalContent }) {
   const [loading, setLoading] = useState(false);
   const editTaskId = useSelector((state) => state.edit.value);
@@ -248,14 +251,21 @@ function CreateTask({ handleShowModal, modalContent }) {
         <div className={styles.btnContainer}>
           <div>
             {" "}
-            <input
+            {/* <input
               value={taskData.dueDate}
               onChange={(e) =>
                 setTaskData({ ...taskData, dueDate: e.target.value })
               }
               name="dueDate"
               type="date"
-            />{" "}
+            />{" "} */}
+            <DatePicker
+              placeholderText="Select Due Date"
+              selected={taskData.dueDate}
+              dateFormat="dd MMM yyyy"
+              onChange={(value) => setTaskData({ ...taskData, dueDate: value })}
+              className={styles.customDate}
+            />
           </div>
           <div>
             {" "}
