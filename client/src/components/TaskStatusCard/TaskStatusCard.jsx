@@ -5,21 +5,17 @@ import add from "../../assets/add.svg";
 import TaskCard from "../TaskCard/TaskCard";
 import { useSelector } from "react-redux";
 
-function TaskStatusCard({ status, handleShowModal, handleModalContent }) {
+function TaskStatusCard({
+  status,
+  handleShowModal,
+  handleModalContent,
+  handleToast,
+}) {
   const [collapseAll, setCollapseAll] = useState(true);
   const data = useSelector((state) => state.allTasks.value);
   const timeFilter = useSelector((state) => state.filter.value);
   const [tasks, setTasks] = useState([]);
-  // useEffect(() => {
-  //   console.log(timeFilter);
-  //   if (status === "backlog") {
-  //     const newData = data.backlog.filter((task) => {
-  //       return isWithinLastWeek(task.createdAt.toString());
-  //     });
-  //     console.log("das", newData);
-  //     setTasks(newData);
-  //   }
-  // }, []);
+
   useEffect(() => {
     if (status === "Backlog" && data.backlog) {
       if (timeFilter === "week") {
@@ -168,6 +164,7 @@ function TaskStatusCard({ status, handleShowModal, handleModalContent }) {
                 collapseAll={collapseAll}
                 handleShowModal={handleShowModal}
                 task={task}
+                handleToast={handleToast}
               />
             );
           })}

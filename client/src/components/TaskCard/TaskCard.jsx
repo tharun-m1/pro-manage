@@ -3,8 +3,7 @@ import styles from "./taskcard.module.css";
 import arrowUp from "../../assets/arrowUp.svg";
 import arrowDown from "../../assets/arrowDown.svg";
 import Loading from "../Loading/Loading";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import {
   changeChecklistItemStatus,
   changeTaskStatus,
@@ -14,12 +13,14 @@ import { useDispatch } from "react-redux";
 import { setTasks } from "../../redux/allTasksSlice";
 import { editTaskId } from "../../redux/editSlice";
 import { frontendBaseUrl } from "../../constants";
+
 function TaskCard({
   collapseAll,
   handleCollapse,
   handleModalContent,
   handleShowModal,
   task,
+  handleToast,
 }) {
   const [display, setDisplay] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
@@ -59,13 +60,11 @@ function TaskCard({
   };
   const handleChangeStatus = async (newStatus) => {
     try {
-      // console.log("ex");
       setLoading(true);
       await changeTaskStatus(newStatus, task._id);
       const allTasks = await getAllTasks();
       dispatch(setTasks(allTasks.data.filteredData));
       setLoading(false);
-      // return window.location.reload();
     } catch (err) {
       setLoading(false);
       console.log(err);
@@ -74,13 +73,11 @@ function TaskCard({
   };
   const handleChecklist = async (e, itemId) => {
     try {
-      // console.log(e.target.value);
       setLoading(true);
       await changeChecklistItemStatus(e.target.checked, task._id, itemId);
       const allTasks = await getAllTasks();
       dispatch(setTasks(allTasks.data.filteredData));
       setLoading(false);
-      // return window.location.reload();
     } catch (err) {
       setLoading(false);
       return window.location.reload();
@@ -90,26 +87,10 @@ function TaskCard({
     const marked = task.checklist.filter((item) => item.status === "done");
     return marked.length;
   };
-  // const handleShare = async (e, taskId) => {
-  //   try {
-  //     e.stopPropagation();
 
-  //     await navigator.clipboard.writeText(
-  //       `${frontendBaseUrl}/public/${taskId}`
-  //     );
-  //     setShowOptions(false);
-  //     toast("Link Copied");
-  //     console.log("Share executed");
-  //     return;
-  //   } catch (err) {
-  //     console.log(err);
-  //     return window.location.reload();
-  //   }
-  // };
   return (
     <>
       <div className={styles.container}>
-        <ToastContainer />
         {loading ? <Loading /> : ""}
         <div style={{ position: "absolute" }}> </div>
         <div className={styles.head}>
@@ -127,6 +108,7 @@ function TaskCard({
           <div
             onClick={(e) => {
               e.stopPropagation();
+              console.log("show executed");
               setShowOptions(!showOptions);
             }}
             style={{ position: "relative" }}
@@ -149,10 +131,13 @@ function TaskCard({
                   onClick={(e) => {
                     e.stopPropagation();
                     handleSelectedOption(e, "share");
+                    console.log("shared");
                     navigator.clipboard
                       .writeText(`${frontendBaseUrl}/public/${task._id}`)
                       .then(() => {
-                        toast("Link Copied");
+                        handleToast();
+                        setShowOptions(false);
+                        setSelectedOption(null);
                       })
                       .catch((err) => {
                         console.log(err);

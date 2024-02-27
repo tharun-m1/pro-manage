@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "./board.module.css";
 import Loading from "../Loading/Loading";
-// import down from "../../assets/down.svg";
-// import collapse from "../../assets/collapse.svg";
-// import add from "../../assets/add.svg";
 import { useDispatch } from "react-redux";
 import TaskStatusCard from "../TaskStatusCard/TaskStatusCard";
 import CreateTask from "../CreateTask/CreateTask";
 import Delete from "../Delete/Delete";
 import { changeFilter } from "../../redux/filterSlice";
-// import { getAllTasks } from "../../api/taskApi";
-// import { setTasks } from "../../redux/allTasksSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { backendBaseUrl } from "../../constants";
 function Board() {
@@ -43,20 +40,27 @@ function Board() {
           "Content-Type": "application/json",
           authorization: jwToken,
         };
+        setLoading(true);
         const response = await axios.get(`${backendBaseUrl}/get-name`, {
           headers: headers,
         });
         setUserName(response.data.data);
+        setLoading(false);
       } catch (err) {
         console.log(err);
+        setLoading(false);
         return window.location.reload();
       }
     }
     getName();
   }, []);
+  const handleToast = () => {
+    return toast("Link Copied");
+  };
   return (
     <>
       <div className={styles.container}>
+        <ToastContainer />
         {loading ? <Loading /> : ""}
         <div className={styles.nameContainer}>
           <div>
@@ -70,9 +74,12 @@ function Board() {
         <div className={styles.titleContainer}>
           <div>Board</div>
           <div>
-            {/* This week <img src={down} /> */}
             <select
-              style={{ border: "none" }}
+              style={{
+                border: "none",
+                fontFamily: "Poppins light",
+                padding: "5px",
+              }}
               onChange={(e) => dispatch(changeFilter(e.target.value))}
             >
               <option selected value={"week"}>
@@ -91,6 +98,7 @@ function Board() {
                 handleShowModal={handleShowModal}
                 key={el}
                 status={el}
+                handleToast={handleToast}
               />
             );
           })}
