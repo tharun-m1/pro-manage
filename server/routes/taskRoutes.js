@@ -29,12 +29,10 @@ router.get("/all-tasks", isLoggedIn, async (req, res, next) => {
     const backlog = data.filter((el) => el.status === "backlog");
     const progress = data.filter((el) => el.status === "progress");
     const done = data.filter((el) => el.status === "done");
+    const filteredData = { todo, backlog, progress, done };
     res.status(200).json({
       status: "OK",
-      todo,
-      backlog,
-      progress,
-      done,
+      filteredData,
     });
   } catch (err) {
     console.log(err.message);
@@ -173,4 +171,52 @@ router.patch("/mark/:taskId/:itemId", isLoggedIn, async (req, res, next) => {
   }
 });
 // ==========================================================================
+// =============================Analytics====================================
+router.get("/analytics", isLoggedIn, async (req, res, next) => {
+  try {
+    const adminId = req.adminId;
+    const data = await Task.find({ adminId: adminId.toString() });
+    const lo = data.filter((task) => task.priority === "lo").length;
+    const hi = data.filter((task) => task.priority === "hi").length;
+    const mod = data.filter((task) => task.priority === "mod").length;
+    const due = data
+      .filter((task) => {
+        return task.dueDate !== null;
+      })
+      .filter((el) => {
+        // let due = new Date(el.dueDate);
+        // let now = new Date();
+        return el.dueDate !== null;
+      }).length;
+    const todo = data.filter((el) => el.status === "todo").length;
+    const backlog = data.filter((el) => el.status === "backlog").length;
+    const progress = data.filter((el) => el.status === "progress").length;
+    const done = data.filter((el) => el.status === "done").length;
+    const filteredData = { todo, backlog, progress, done, lo, hi, mod, due };
+    res.status(200).json({
+      status: "OK",
+      filteredData,
+    });
+  } catch (err) {
+    console.log(err.message);
+    next(err);
+  }
+});
+// ===================================================================
+router.get("/public/:taskId", async (req, res, next) => {
+  try {
+    const { taskId } = req.params;
+    const task = await Task.find({ _id: taskId });
+    if (!task) {
+      return next(erroHandler(404, "Task Not Found."));
+    }
+    res.status(200).json({
+      status: "OK",
+      data: task,
+    });
+  } catch (err) {
+    console.log(err.message);
+    next(err);
+  }
+});
 module.exports = router;

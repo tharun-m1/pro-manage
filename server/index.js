@@ -5,6 +5,7 @@ const cors = require("cors");
 require("dotenv").config();
 const authRoutes = require("./routes/auth");
 const taskRoutes = require("./routes/taskRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
 app.use(cors());
@@ -21,6 +22,7 @@ app.get("/health", (req, res) => {
 // ===================== routes ===================================
 app.use("/", authRoutes);
 app.use("/", taskRoutes);
+app.use("/", adminRoutes);
 // ====================Error Handler===============================
 app.use((err, req, res, next) => {
   const status = err.status || 500;

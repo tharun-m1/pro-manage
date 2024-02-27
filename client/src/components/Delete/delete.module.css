@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: Noto Sans;
+  src: url("../../assets/fonts/NotoSans_Condensed-SemiBold.ttf");
+}
+.container {
+  /* border: 1px solid red; */
+  width: 30%;
+  height: 40vh;
+  background-color: #ffffff;
+  position: absolute;
+  left: 35%;
+  top: 25vh;
+  border-radius: 20px;
+  padding: 20px 10px 15px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.container > div:first-child {
+  /* border: 1px solid red; */
+  font-family: Noto Sans;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: 0px;
+  text-align: center;
+  padding: 20px 0px;
+}
+.container > div:nth-child(2) {
+  /* border: 1px solid red; */
+  margin-top: auto;
+  padding: 0px 15px;
+}
+.container > div:nth-child(3) {
+  /* border: 1px solid red; */
+  padding: 0px 15px;
+}
+.container > div:nth-child(2) button {
+  width: 100%;
+  background-color: #17a2b8;
+  box-shadow: 0px 2px 12px 0px #82698c33;
+  border: none;
+  border-radius: 20px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #ffffff;
+  padding: 15px 0px;
+  cursor: pointer;
+}
+.container > div:nth-child(3) button {
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 12px 0px #82698c33;
+  border: 1px solid #cf3636;
+  border-radius: 20px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #cf3636;
+  padding: 15px 0px;
+  cursor: pointer;
+}

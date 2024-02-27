@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  /* border: 1px solid red; */
+  width: 47%;
+  height: 75vh;
+  background-color: white;
+  position: absolute;
+  left: 30%;
+  top: 11%;
+  border-radius: 20px;
+  padding: 15px 25px 25px 25px;
+}
+.title {
+  /* border: 1px solid red; */
+  padding-top: 10px;
+  font-size: 1rem;
+  font-family: Inter;
+}
+.title > div:first-child {
+  /* border: 1px solid red; */
+  padding-bottom: 10px;
+}
+sup {
+  color: #ff0000;
+}
+.title input {
+  width: 100%;
+  border: 1px solid #e2e2e2;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-family: Inter;
+  border-radius: 10px;
+}
+.priorityContainer {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 15px 0px;
+}
+.priorityContainer > div {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  font-family: Poppins light;
+}
+.priorityContainer > div:first-child {
+  font-family: Poppins;
+}
+.priorityContainer > :not(:first-child) {
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  padding: 5px 11px;
+  cursor: pointer;
+}
+
+.circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+}
+.body {
+  /* border: 1px solid red; */
+  width: 100%;
+  max-height: 35%;
+  overflow: auto;
+  padding: 15px 10px;
+}
+.body > div {
+  margin: 10px 0px;
+}
+.inputCont {
+  /* border: 1px solid red; */
+  display: flex;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.inputCont > div:nth-child(2) {
+  flex-grow: 1;
+}
+.inputCont > div:nth-child(2) input {
+  width: 100%;
+  border: none;
+  font-size: 1.2rem;
+  padding: 5px 10px;
+}
+.inputCont > div:nth-child(2) input:focus {
+  border: none;
+}
+.addNew {
+  /* border: 1px solid red; */
+  width: 20%;
+  margin-top: 10px;
+}
+.addNew button {
+  /* border: 1px solid red; */
+  background: none;
+  border: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: Inter;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #767575;
+  cursor: pointer;
+  padding: 10px;
+}
+.btnContainer {
+  /* border: 1px solid red; */
+  width: 90%;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+}
+.btnContainer > div:nth-child(2) {
+  margin-left: auto;
+}
+
+.btnContainer > div:first-child input {
+  /* opacity: 0; */
+  cursor: pointer;
+  height: 100%;
+  padding: 0px 20px;
+  border-radius: 20px;
+  border: 1px solid #e2e2e2;
+}
+.btnContainer > :not(:first-child) {
+  /* border: 1px solid red; */
+  margin-right: 20px;
+  border-radius: 20px;
+}
+.btnContainer > :not(:first-child) button {
+  background: none;
+  border-radius: 20px;
+  border: none;
+  font-family: Poppins;
+  letter-spacing: 0.5px;
+  font-size: 1.2rem;
+  padding: 10px 50px;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}

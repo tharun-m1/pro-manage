@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./nav.module.css";
 import logo from "../../assets/logo.svg";
 import board from "../../assets/layout.svg";
@@ -7,15 +7,15 @@ import settings from "../../assets/settings.svg";
 import logout from "../../assets/Logout.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { changeNav } from "../../redux/navSlice";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import Logout from "../Logout/Logout";
 function Nav() {
-  const navigate = useNavigate();
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  // const navigate = useNavigate();
   const nav = useSelector((state) => state.nav.value);
   const dispatch = useDispatch();
-  const handleLogout = () => {
-    localStorage.removeItem("jwToken");
-    navigate("/");
-    return window.location.reload();
+  const handleLogoutModal = (state) => {
+    setShowDeleteModal(state);
   };
   return (
     <>
@@ -58,10 +58,17 @@ function Nav() {
           <img src={settings} alt="settings" />
           <span>Settings</span>
         </div>
-        <div onClick={handleLogout} className={styles.logout}>
+        <div onClick={() => handleLogoutModal(true)} className={styles.logout}>
           <img width={"30px"} src={logout} alt="analytics" />
           <span>Log out</span>
         </div>
+        {showDeleteModal ? (
+          <div className={styles.modal}>
+            <Logout handleLogoutModal={handleLogoutModal} />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
