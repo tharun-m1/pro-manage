@@ -93,8 +93,10 @@ function CreateTask({ handleShowModal, modalContent }) {
       }
     } catch (err) {
       console.log(err);
-      alert("Something went wrong");
       setLoading(false);
+      if (err.status >= 500) {
+        localStorage.removeItem("jwToken");
+      }
       return window.location.reload();
     }
   };
@@ -111,7 +113,7 @@ function CreateTask({ handleShowModal, modalContent }) {
         setLoading(false);
       } catch (err) {
         setLoading(false);
-        // window.location.reload();
+        window.location.reload();
         return alert("Something went wrong in getting task");
       }
     }

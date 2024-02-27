@@ -5,7 +5,6 @@ function Loading() {
     <div
       style={{
         height: "99.99vh",
-        // border: "1px solid red",
         position: "fixed",
         top: "0",
         left: "0",

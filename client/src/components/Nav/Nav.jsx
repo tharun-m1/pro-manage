@@ -7,11 +7,11 @@ import settings from "../../assets/settings.svg";
 import logout from "../../assets/Logout.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { changeNav } from "../../redux/navSlice";
-// import { useNavigate } from "react-router-dom";
+
 import Logout from "../Logout/Logout";
 function Nav() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  // const navigate = useNavigate();
+
   const nav = useSelector((state) => state.nav.value);
   const dispatch = useDispatch();
   const handleLogoutModal = (state) => {

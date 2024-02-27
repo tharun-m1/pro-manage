@@ -27,13 +27,13 @@ function Dashboard() {
       return <UpdateForm />;
     }
   };
+
   useEffect(() => {
     async function Verify() {
       try {
         setLoading(true);
         await verify();
         const response = await getAllTasks();
-        // console.log(response);
         dispatch(setTasks(response.data.filteredData));
         setLoading(false);
       } catch (err) {

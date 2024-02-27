@@ -14,14 +14,15 @@ function Delete({ handleShowModal }) {
     try {
       const taskId = deleteId;
       setLoading(true);
-      const response = await deleteTask(taskId);
+      await deleteTask(taskId);
       setLoading(false);
       alert("Task Deleted");
       handleShowModal(false);
       return window.location.reload();
     } catch (err) {
       setLoading(false);
-      return alert("Something went wrong");
+      localStorage.removeItem("jwToken");
+      return window.location.reload();
     }
   };
   return (

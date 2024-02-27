@@ -39,7 +39,7 @@ function UpdateForm() {
           name: name,
         };
         setLoading(true);
-        const response = await updateUser(payload);
+        await updateUser(payload);
         setLoading(false);
         return alert("User updated");
       } else if (name === "" && oldPassword !== "" && newPassword !== "") {
@@ -51,7 +51,7 @@ function UpdateForm() {
           newPassword: newPassword,
         };
         setLoading(true);
-        const response = await updateUser(payload);
+        await updateUser(payload);
         setLoading(false);
         return alert("User updated");
       } else if (name !== "" && oldPassword !== "" && newPassword !== "") {
@@ -64,7 +64,7 @@ function UpdateForm() {
           newPassword: newPassword,
         };
         setLoading(true);
-        const response = await updateUser(payload);
+        await updateUser(payload);
         setLoading(false);
         return alert("User updated");
       } else {
@@ -75,6 +75,7 @@ function UpdateForm() {
       if (err.status === 401) {
         return alert("Incorrect Passsowrd");
       } else {
+        window.location.reload();
         return alert("Something went wrong");
       }
     }

@@ -22,7 +22,12 @@ export const createTask = async (payload) => {
     return response;
   } catch (err) {
     console.log(err);
-    throw new Error();
+    const error = new Error();
+    if (err.response.status >= 500) {
+      error.status = 500;
+      error.message = "Not logged In";
+      throw error;
+    }
   }
 };
 

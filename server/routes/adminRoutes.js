@@ -9,7 +9,6 @@ router.patch("/update", isLoggedIn, async (req, res, next) => {
   try {
     const adminId = req.adminId;
     const { name, oldPassword, newPassword } = req.body;
-    console.log(name, oldPassword, newPassword);
     if (!name && (!oldPassword || !newPassword)) {
       return next(errorHandler(500, "no details"));
     }

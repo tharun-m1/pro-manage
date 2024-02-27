@@ -68,7 +68,8 @@ function TaskCard({
     } catch (err) {
       setLoading(false);
       console.log(err);
-      return alert("Something went wrong");
+      localStorage.removeItem("jwToken");
+      return window.location.reload();
     }
   };
   const handleChecklist = async (e, itemId) => {
@@ -80,6 +81,7 @@ function TaskCard({
       setLoading(false);
     } catch (err) {
       setLoading(false);
+      localStorage.removeItem("jwToken");
       return window.location.reload();
     }
   };

@@ -79,6 +79,7 @@ function Board() {
                 border: "none",
                 fontFamily: "Poppins light",
                 padding: "5px",
+                cursor: "pointer",
               }}
               onChange={(e) => dispatch(changeFilter(e.target.value))}
             >
