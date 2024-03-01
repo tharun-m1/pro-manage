@@ -5,10 +5,12 @@ import axios from "axios";
 import { backendBaseUrl } from "../../constants";
 import { useParams } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
+import { useNavigate } from "react-router-dom";
 function PublicPage() {
   const [loading, setLoading] = useState(false);
   const [task, setTask] = useState(null);
   const { taskId } = useParams();
+  const navigate = useNavigate();
   const getPriority = () => {
     if (task?.priority === "hi") return "High Priority";
 
@@ -32,11 +34,12 @@ function PublicPage() {
       try {
         setLoading(true);
         const res = await axios.get(`${backendBaseUrl}/public/${taskId}`);
-        console.log(res.data.data[0]);
+        // console.log(res.data.data[0]);
         setTask(res.data.data[0]);
         setLoading(false);
       } catch (err) {
         setLoading(false);
+        navigate("*");
         console.log(err);
       }
     }

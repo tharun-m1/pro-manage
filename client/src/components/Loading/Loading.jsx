@@ -4,7 +4,7 @@ function Loading() {
   return (
     <div
       style={{
-        height: "99.99vh",
+        height: "99.99dvh",
         position: "fixed",
         top: "0",
         left: "0",
